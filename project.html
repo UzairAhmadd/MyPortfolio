@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Portfolio</title>
+  </head>
+<style>
+    
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+.fa{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:fixed;
+    bottom:700px;
+    right:40px;
+    height:50px;
+    width:50px;
+    background:rgb(226, 69, 69);
+    border-radius:50%;
+    color:#fff;
+    box-shadow:0px 0px 10px rgba(0,0,0,.5);
+    background-position:center;
+    background-repeat:no-repeat;
+    visibility:hidden;
+    opacity:0;
+    /*cursor:pointer;*/
+    transition:.3s;
+    z-index:10000;
+
+    
+}
+.fa.active{
+    visibility:visible;
+    opacity:1;
+    bottom:40px;
+}
+
+.sec1 {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    border-bottom: .1rem solid #ccc;
+
+}
+
+.menuBar {
+    position: fixed;
+    top: 0;
+    left: 120%;
+    height: 100%;
+    width: 80%;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 5rem rgba(0, 0, 0, .5);
+    transition: .5s;
+}
+
+.menuBar.active {
+    left: 20%;
+}
+
+.menuBar ul {
+    list-style-type: none;
+}
+
+.menuBar ul li {
+    margin: 5rem 0;
+}
+
+.menuBar ul li a {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2rem;
+    padding: 1.5rem;
+    transition: .5s;
+    background: #e66060;
+    padding: 1rem 3rem;
+    border-radius: 3rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
+
+}
+
+
+.menuBar ul li a:hover {
+    color: #e66060;
+    background: #fff;
+}
+
+.navBar {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, .2);
+    z-index: 2000;
+}
+
+.sec1__menuIcon {
+    display: none;
+    position: relative;
+    height: 3rem;
+    width: 3rem;
+    background: url('https://i.ibb.co/ccyJDPg/icons8-menu-24.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.sec1__menuIcon.active {
+    background: url('https://i.ibb.co/G9TDqVj/icons8-macos-close-32.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.navBar .logo h1 {
+    color: #333;
+    font-size: 2rem;
+    letter-spacing: .2rem;
+}
+
+.navBar .navBar__menu ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.navBar .navBar__menu ul li {
+    margin: 1.5rem;
+}
+
+.navBar .navBar__menu ul li a {
+    position: relative;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    color: #333;
+    transition: .3s;
+}
+
+.navBar .navBar__menu ul li a:before {
+    background: rgb(236, 78, 78);
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    height: .4rem;
+    width: 0%;
+    border-radius: 1rem;
+    transition: .4s;
+}
+
+.navBar .navBar__menu ul li a:hover:before {
+    width: 100%;
+}
+
+.navBar .navBar__menu ul li a:hover {
+    color: rgb(226, 86, 86);
+}
+
+.sec1__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10rem;
+    /* background: blue; */
+    width: 100%;
+    padding: 0 5rem;
+}
+
+.sec1__content .sec1__contentDetail h1 {
+    font-weight: 900;
+    font-size: 5rem;
+    text-transform: capitalize;
+    transform: translateY(7rem);
+}
+
+.sec1__contentHider {
+    overflow: hidden;
+}
+
+.sec1__content .sec1__contentDetail h1 span {
+    color: rgb(236, 75, 75);
+}
+
+.sec1__content .sec1__contentDetail {
+    margin-bottom: 3rem;
+}
+
+.sec1__content a {
+    background: rgb(226, 69, 69);
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    transition: .4s;
+}
+
+.sec1__content a:hover {
+    background: rgb(216, 43, 43);
+}
+
+.sec1__imgContainer {
+    position: relative;
+}
+
+.sec1__imgBx {
+    position: relative;
+    width: 50rem;
+    /* background: red; */
+}
+
+.sec1__design3 {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background: linear-gradient(rgb(255, 107, 107), rgb(184, 27, 27));
+}
+
+.sec1__design4 {
+    content: "";
+    position: absolute;
+    top: 40%;
+    left: -10%;
+    height: 40%;
+    width: 40%;
+    border-radius: 30% 50%;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, .2);
+    background: linear-gradient(rgb(245, 93, 93), rgb(255, 122, 122));
+    animation: animate3 ease-in-out 3s infinite;
+}
+
+@keyframes animate3 {
+    0% {
+        transform: translateY(-3rem);
+    }
+
+    50% {
+        transform: translateY(0rem);
+    }
+
+    100% {
+        transform: translateY(-3rem);
+    }
+}
+
+.sec1__imgBx img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    object-fit: cover;
+    filter: drop-shadow(0 0 .5rem rgba(0, 0, 0, .5));
+}
+
+.sec1__imgBx .sec1__design1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10rem;
+    width: 10rem;
+    background: linear-gradient(rgb(255, 107, 107), rgb(184, 27, 27));
+    border-radius: 5rem 10rem 10rem 4rem;
+    filter: blur(6px);
+    animation: animate 3s ease-in-out infinite;
+    z-index: 1000;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateX(0rem);
+    }
+
+    50% {
+        transform: translateX(2rem);
+    }
+
+    100% {
+        transform: translateX(0rem);
+    }
+}
+
+.sec1__imgBx .sec1__design2 {
+    position: absolute;
+    bottom: 2rem;
+    right: 0;
+    height: 10rem;
+    width: 10rem;
+    background: linear-gradient(rgb(255, 107, 107), rgb(184, 27, 27));
+    border-radius: 2rem;
+    filter: blur(2px);
+    animation: animate2 ease-in-out 5s infinite;
+    z-index: 1000;
+}
+
+@keyframes animate2 {
+    0% {
+        transform: translateY(0rem) rotateZ(0deg);
+    }
+
+    50% {
+        transform: translateY(-2rem) rotateZ(360deg);
+    }
+
+    100% {
+        transform: translateY(0rem) rotateZ(0deg);
+    }
+}
+
+.sec2 {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: .2rem solid rgb(218, 218, 218);
+}
+
+.sec2__heading {
+    overflow: hidden;
+}
+
+.sec2__heading h2 {
+    position: relative;
+    font-size: 5rem;
+    color: #333;
+    text-transform: capitalize;
+}
+
+.sec2__heading h2:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: .2rem;
+    width: 100%;
+    background-color: rgb(241, 102, 102);
+}
+
+.sec2__container {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+    padding: 0 5rem;
+}
+
+.sec2__aboutme1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: .5;
+}
+
+.sec2__aboutme1Img {
+    position: relative;
+    margin:15px;
+    overflow: hidden;
+    border: .3rem solid rgb(156, 60, 60);
+    padding: .3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+}
+
+.sec2__aboutme1Img:hover {
+    transform: scale(1.1);
+}
+
+.sec2__aboutme1Img img {
+    width: 100%;
+    object-fit: cover;
+    background: linear-gradient(rgb(255, 121, 121), rgb(146, 33, 33));
+    border-radius: 50%;
+}
+
+.sec2__aboutme1 h2 {
+    position: relative;
+    font-size: 2rem;
+    color: #333;
+    padding-bottom: 1rem;
+
+}
+
+.sec2__aboutme1 h2:before {
+    position: absolute;
+    height: .2rem;
+    width: 60%;
+    bottom: 0;
+    right: 25%;
+    content: "";
+    background: #ccc;
+}
+
+.sec2__aboutme1Social ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1rem;
+    list-style-type: none;
+}
+
+.sec2__aboutme1Social ul li {
+    margin: 0 2rem;
+    transition: .3s;
+
+}
+
+.sec2__aboutme1Social ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 3rem;
+    transition: .3s;
+}
+
+.sec2__aboutme1Social ul li:hover {
+    transform: translateY(-.3rem);
+}
+
+.sec2__aboutme1Social ul li:nth-child(1) a:hover {
+    color: rgb(235, 108, 108);
+}
+
+.sec2__aboutme1Social ul li:nth-child(2) a:hover {
+    color: rgb(0, 0, 0);
+}
+
+.sec2__aboutme1Social ul li:nth-child(3) a:hover {
+    color: rgb(85, 109, 219);
+
+}
+
+.sec2__aboutme2 {
+    position: relative;
+    flex: .5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec2__aboutme2 p {
+    font-size: 1.5rem;
+}
+/* media query start here  */
+@media(max-width:610px) {
+    .sec1__menuIcon {
+        display: inline-block;
+      
+    }
+
+    .sec1__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 10rem;
+        /* background: blue; */
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    .navBar__menu {
+        display: none;
+    }
+
+    .sec1__content .sec1__contentDetail h1 {
+        font-weight: 900;
+        font-size: 3.5rem;
+        text-transform: capitalize;
+        transform: translateY(7rem);
+    }
+
+    .sec1__imgBx {
+        position: relative;
+        width: 30rem;
+        /* background: red; */
+        margin-top: 5rem;
+    }
+
+    .sec2__container {
+        position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        flex-wrap: wrap;
+        padding: 0 2rem;
+        flex-direction: column;
+    }
+
+    .sec2__heading h2 {
+        position: relative;
+        font-size: 2.5rem;
+        color: #333;
+        text-transform: capitalize;
+    }
+
+    .sec2__aboutme1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex: .5;
+        margin: 5rem 0;
+    }
+
+    .sec2__aboutme2 {
+        position: relative;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 0 3rem 0;
+    }
+
+    .sec4__box1 {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        flex-direction: column;
+        flex: .5;
+        margin: 2.5rem 0 4rem 0;
+    }
+
+    .sec4__box2 {
+        margin: 2.5rem 0;
+    }
+}
+/* Contact Me Start*/
+/* Styling Contact Section */
+.contact-section {
+  width:100%;
+  text-align: center;
+  display:flex;
+  justify-content:center;
+  padding:0px;
+  background-color: rgb(241, 102, 102);
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.contact-container {
+  width:80%;
+  
+}
+
+.contact-form {
+  margin-bottom: 30px;
+  margin-top: 30px;
+  
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1.5rem;
+}
+
+
+.contact-form button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #45a049;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content:space-around;
+  gap:25px;
+
+}
+
+.info-item {
+  margin: 0 20px;
+  text-align: left;
+}
+
+.info-item span {
+  margin-left: 10px;
+
+}
+
+.info-item span:first-child {
+  font-size: 2rem;
+  color: #555;
+}
+
+.info-item span:last-child {
+  font-size: 1.9rem;
+  color: #777;
+}
+@media (max-width: 576px) {
+  .info-item span:first-child {
+    font-size: 1.4rem;
+    margin:0;
+    padding:0;
+
+  }
+  .info-item span:last-child {
+    font-size: 1.3rem;
+    
+
+  }
+}
+/* Contact Me End*/
+
+   /* skill */
+
+   .skills-section{
+    padding: 50px 20px;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    max-width: 1200px;
+    margin: 20px;
+}
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    
+}
+
+.skill {
+  
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height:150px;
+    width:150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.skill:hover {
+    transform: scale(1.1);
+    background-color: #e0f7fa;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.skill img {
+    font-size: 3.5em;   
+    transition: color 0.3s;
+    background:none;
+    height:120px;
+    width:120px;
+   
+}
+
+.skill:hover i {
+    color: #0056b3;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .skills-container {
+        gap: 15px;    
+    }
+
+    .skill {
+        width: 150px;
+        height: 150px;
+        margin:15px;
+    }
+    .skill img{
+        
+        padding:10px;
+    }
+}
+
+@media (max-width: 992px) {
+    .skills-container {
+        flex-direction: row;
+        
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+     }
+
+    .skill {
+        margin-bottom: 20px;
+    }
+    .skill img {
+        padding:10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-container {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .skill {
+        width: 150px;
+        height: 150px;    
+    }
+    .skill img{
+      padding:10px;
+    }
+  }
+
+@media (max-width: 576px) {
+     .skills-container{
+      flex-direction: row;
+      gap:5px;
+     
+      
+     
+}
+
+    .section-title {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .skill{
+       
+        width: 100px;
+        height: 100px;
+
+    }
+    .skill img {
+      height:100px;
+      width:100px;
+}
+}
+/* skills */
+
+/* Projects Start*/
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+}
+.sec2__heading h2{
+  margin:80px;
+}
+
+.project-item {
+  width: 45%;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  perspective: 1000px;
+  background: #fff;
+}
+
+.project-item:hover {
+  transform: translateY(-5px) rotateX(5deg);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-item p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #3F51B5;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.button i {
+  margin-right: 5px;
+}
+
+.button:hover {
+  background-color: #9C27B0;
+  transform: translateY(-2px);
+}
+.card {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  margin:20px;
+}
+
+.card svg {
+  width: 48px;
+  fill: #333;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover .card__content {
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 1;
+}
+.card img{
+border-radius:40px;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  font-weight: 700;
+}
+
+.card__description {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.4;
+}
+
+.card:hover svg {
+  scale: 0;
+  transform: rotate(-45deg);
+}
+/* Projects End*/
+
+</style>
+  <body>
+  <i class="fa fa-arrow-up" aria-hidden="true" onclick = "scrollToTop();"></i>
+    <section class="sec1" id="section1">
+      <div class="menuBar">
+        <ul>
+          <li><a href="#section1">Home</a></li>
+          <li><a href="#section2">About</a></li>
+          <li><a href="#section3">Skill</a></li>
+          <li><a href="#section4">Projects</a></li>
+          <li><a href="#section5">Contact Me</a></li>
+        </ul>
+      </div>
+      <div class="navBar">
+        <div class="logo">
+          <h1>Uzair Ahmad</h1>
+        </div>
+        <div class="navBar__menu">
+          <ul>
+            <li>
+              <a href="#section1">Home</a>
+            </li>
+            <li>
+              <a href="#section2">About</a>
+            </li>
+            <li>
+              <a href="#section3">Skill</a>
+            </li>
+            <li>
+              <a href="#section4">Projects</a>
+            </li>
+            <li>
+              <a href="#section5">Contact Me</a>
+            </li>
+          </ul>
+        </div>
+        <div class="sec1__menuIcon"></div>
+      </div>
+      <div class="sec1__container">
+        <div class="sec1__content">
+          <div class="sec1__contentDetail">
+            <div class="sec1__contentHider">
+              <h1>hi,</h1>
+            </div>
+            <div class="sec1__contentHider">
+              <h1>I'am <span>Uzair</span></h1>
+            </div>
+            <div class="sec1__contentHider">
+              <h1>Web Developer</h1>
+            </div>
+          </div>
+          <a href="https://drive.google.com/file/d/114Zzj5zwlRZOjoV68lfpv-rdvdeDqOx4/view?usp=drivesdk">Download CV</a>
+        </div>
+        <div class="sec1__imgContainer">
+          <div class="sec1__imgBx">
+            <img src="https://i.ibb.co/yy8bxz7/Pics-Art-04-10-08-59-51.png"  alt="" />
+            <span class="sec1__design1"></span>
+            <span class="sec1__design2"></span>
+            <span class="sec1__design3"></span>
+            <span class="sec1__design4"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sec2" id="section2">
+      <div class="sec2__heading">
+        <h2>about me</h2>
+      </div>
+      <div class="sec2__container">
+        <div class="sec2__aboutme1" data-aos="fade-up" data-aos-offset="-90">
+          <div class="sec2__aboutme1Img">
+            <img src="https://i.ibb.co/yy8bxz7/Pics-Art-04-10-08-59-51.png" alt="" height="250px" width="350px" />
+          </div>
+          <h2>Uzair Ahmad</h2>
+          <div class="sec2__aboutme1Social">
+            <ul>
+              <li>
+                <a href="https://www.instagram.com/vivek_kumar_mahali/"><i class="fab fa-instagram"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-google"></i></a>
+              </li>
+              <li>
+                <a href="https://m.facebook.com/profile.php"><i class="fab fa-facebook"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="sec2__aboutme2" data-aos="fade-up" data-aos-delay="1000">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla
+            reiciendis ullam atque dolores expedita debitis veritatis dolorum
+            earum deleniti possimus. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Vel optio accusantium nobis dolore eligendi magni,
+            a rerum ipsum odit numquam labore enim. Nam cumque, praesentium
+            tempora itaque delectus ratione mollitia. Lorem ipsum, dolor sit
+            amet consectetur adipisicing elit.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla
+            reiciendis ullam atque dolores expedita debitis veritatis dolorum
+            earum deleniti possimus. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Vel optio accusantium nobis dolore eligendi magni,
+            a rerum ipsum odit numquam labore enim. Nam cumque, praesentium
+            tempora itaque delectus ratione mollitia. Lorem ipsum, dolor sit
+            amet consectetur adipisicing elit.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla
+            reiciendis ullam atque dolores expedita debitis veritatis dolorum
+            earum deleniti possimus. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Vel optio accusantium nobis dolore eligendi magni,
+            a rerum ipsum odit numquam labore enim. Nam cumque, praesentium
+            tempora itaque delectus ratione mollitia. Lorem ipsum, dolor sit
+            amet consectetur adipisicing elit.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="sec2" id="section3"  data-aos="fade-up" data-aos-offset="-90">
+      <div class="sec2__heading"  data-aos="fade-up" data-aos-offset="-90">
+        <h2>Skills</h2>
+      </div>
+      <section class="skills-section" data-aos="fade-up" data-aos-offset="100">
+         
+        <div class="skills-container" data-aos="fade-up" data-aos-offset="100">
+            <!-- Icons Only -->
+            <div class="skill" >
+                <img src="https://static-00.iconduck.com/assets.00/html-5-icon-726x1024-evem6gg5.png" alt="">
+            </div>
+            <div class="skill" >
+                <img src="https://static-00.iconduck.com/assets.00/css-3-icon-726x1024-610441pl.png" alt="">
+            </div>
+            <div class="skill" >
+                <img src="https://static-00.iconduck.com/assets.00/javascript-js-icon-2048x2048-nyxvtvk0.png" alt="" >
+            </div>
+            <div class="skill" >
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" alt="">
+            </div>
+            <div class="skill">
+                <img src="https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-512.png" alt="">
+            </div>
+               <div class="skill" >
+              <img src="https://static-00.iconduck.com/assets.00/django-icon-1606x2048-lwmw1z73.png" alt="">
+            </div>
+            <div class="skill" >
+                <img src="https://static-00.iconduck.com/assets.00/sql-database-sql-azure-icon-1955x2048-4pmty46t.png" alt="">
+            </div>
+            <div class="skill" >
+                <img src="https://static-00.iconduck.com/assets.00/java-icon-1511x2048-6ikx8301.png" alt="">
+            </div>
+            <div class="skill" >
+              <img src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png" alt="">
+            </div>
+            <div class="skill" >
+                <img src="https://cdn-icons-png.flaticon.com/512/2164/2164832.png" alt="">
+            </div>
+        </div>
+    </section>
+    </section>
+
+    
+    <section class="sec2" id="section4"  data-aos="fade-up" data-aos-offset="100">
+      <div class="sec2__heading"  data-aos="fade-up" data-aos-offset="100">
+        <h2>Projects</h2>
+      </div>
+      <section id="projects" class="projects">
+        <div class="container" data-aos="fade-up" data-aos-offset="100">
+            <div class="project-list">
+                <div class="card"  data-aos="fade-up" data-aos-offset="-90">
+                  <img src="images/E-commerce_Website.png" alt="E-commerce_Website" width="290" height="290">
+                    <div class="card__content">
+                      <p class="card__title">E-commerce_Website</p>
+                      <p class="card__description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua.
+                      </p>
+                      <a href="https://github.com/johndoe/project2" target="_blank" class="button"><i class="fa fa-github"></i> View on GitHub</a>
+                      <a href="https://project2.example.com" target="_blank" class="button"><i class="fa fa-external-link"></i> Live Demo</a>
+                  
+                    </div>
+                  </div>
+                <div class="card"  data-aos="fade-up" data-aos-offset="100">
+                  <img src="images/Crud.png" alt="Crud" width="290" height=290">
+                    <div class="card__content">
+                      <p class="card__title">Crud Application</p>
+                      <p class="card__description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamco.
+                      </p>
+                      <a href="https://github.com/johndoe/project2" target="_blank" class="button"><i class="fa fa-github"></i> View on GitHub</a>
+                      <a href="https://project2.example.com" target="_blank" class="button"><i class="fa fa-external-link"></i> Live Demo</a>
+                  
+                    </div>
+                  </div>
+                <div class="card" data-aos="fade-up" data-aos-offset="100">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path
+                        d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"
+                      ></path>
+                    </svg>
+                    <div class="card__content">
+                      <p class="card__title">Card Title</p>
+                      <p class="card__description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamco.
+                      </p>
+                      <a href="https://github.com/johndoe/project2" target="_blank" class="button"><i class="fa fa-github"></i> View on GitHub</a>
+                      <a href="https://project2.example.com" target="_blank" class="button"><i class="fa fa-external-link"></i> Live Demo</a>
+                  
+                    </div>
+                  </div>
+                <div class="card" data-aos="fade-up" data-aos-offset="100">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path
+                        d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"
+                      ></path>
+                    </svg>
+                    <div class="card__content">
+                      <p class="card__title">Card Title</p>
+                      <p class="card__description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamco.
+                      </p>
+                      <a href="https://github.com/johndoe/project2" target="_blank" class="button"><i class="fa fa-github"></i> View on GitHub</a>
+                      <a href="https://project2.example.com" target="_blank" class="button"><i class="fa fa-external-link"></i> Live Demo</a>
+                  
+                    </div>
+                  </div>
+                <div class="card" data-aos="fade-up" data-aos-offset="100">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path
+                        d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"
+                      ></path>
+                    </svg>
+                    <div class="card__content">
+                      <p class="card__title">Card Title</p>
+                      <p class="card__description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamco.
+                      </p>
+                      <a href="https://github.com/johndoe/project2" target="_blank" class="button"><i class="fa fa-github"></i> View on GitHub</a>
+                      <a href="https://project2.example.com" target="_blank" class="button"><i class="fa fa-external-link"></i> Live Demo</a>
+                  
+                    </div>
+                  </div>
+                <div class="card"  data-aos="fade-up" data-aos-offset="-90">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path
+                        d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"
+                      ></path>
+                    </svg>
+                    <div class="card__content">
+                      <p class="card__title">Card Title</p>
+                      <p class="card__description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamco.
+                      </p>
+                      <a href="https://github.com/johndoe/project2" target="_blank" class="button"><i class="fa fa-github"></i> View on GitHub</a>
+                      <a href="https://project2.example.com" target="_blank" class="button"><i class="fa fa-external-link"></i> Live Demo</a>
+                  
+                    </div>
+                  </div>
+                <!-- Add more project items as needed -->
+            </div>
+        </div>
+    </section>
+
+   
+    </section>
+
+
+
+
+    <section class="sec2" id="section5" >
+      <div class="sec2__heading" data-aos="fade-up" data-aos-offset="100">
+        <h2>Contact Me</h2>
+      </div>
+    <section class="contact-section">
+      <div class="contact-container"  data-aos="fade-up" data-aos-offset="100">
+        <div class="contact-form">
+          <form action="#" method="post">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit"   data-aos="fade-up" data-aos-offset="100">Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info" data-aos="fade-up" data-aos-offset="30">
+          <div class="info-item">
+            <span class="fas fa-map-marker-alt"></span>
+            <span>Raebareli, Uttar Pradesh, India</span>
+          </div>
+          <div class="info-item">
+            <span class="fas fa-envelope"></span>
+            <span>uzairansari9554@gmail.com</span>
+          </div>
+          <div class="info-item">
+            <span class="fas fa-phone"></span>
+            <span>+91 9554034120</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    </section>
+   
+    
+    
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"
+      integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
+
+      tl.from(".navBar", { y: "-10rem", duration: 1 });
+      tl.from(".navBar .navBar__menu ul li", {
+        y: "-2rem",
+        opacity: 0,
+        duration: 1,
+        stagger: 0.25,
+      });
+      tl.to(
+        ".sec1__content .sec1__contentDetail h1",
+        { y: "0rem", duration: 1, stagger: 0.25 },
+        "=-1"
+      );
+      tl.from(".sec1__imgBx img", { opacity: 0, x: "50%", duration: 1.5 });
+      tl.from(
+        ".sec1__imgBx .sec1__design1",
+        { opacity: 0, x: "3rem", duration: 1.5 },
+        "=-1"
+      );
+      tl.from(
+        ".sec1__imgBx .sec1__design2",
+        { opacity: 0, x: "-3rem", duration: 1.5 },
+        "=-1"
+      );
+      tl.from(
+        ".sec1__design3",
+        { opacity: 0, x: "-30%", duration: 1.5 },
+        "=-2"
+      );
+      tl.from(".sec1__design4", { opacity: 0, duration: 1.5 }, "=-2");
+      tl.from(".sec1__content a", { opacity: 0, duration: 1.5 }, "=-3");
+    </script>
+    <!-- our AOs will occur here -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        offset:0,
+      });
+    </script>
+    <script>
+      var sec1__menuIcon = document.querySelector(".sec1__menuIcon");
+      var menuBar = document.querySelector(".menuBar");
+      sec1__menuIcon.addEventListener("click", function () {
+        sec1__menuIcon.classList.toggle("active");
+        menuBar.classList.toggle("active");
+      });
+    </script>
+    <script type = "text/javascript">
+        window.addEventListener('scroll',function(){
+            var scroll = document.querySelector('.fa');
+            scroll.classList.toggle("active",window.scrollY>500)
+        })
+        function scrollToTop(){
+            window.scrollTo({
+                top:0,
+                behavior:'smooth'
+            })
+        }
+    </script>
+  </body>
+</html>
